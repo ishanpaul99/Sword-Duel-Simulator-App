@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sword Duel Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="sword duel simulator.png">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <nav class="navbar">
+        <a class="brand" href="#home">
+          <img class="brand-icon" src="sword duel simulator.png" alt="logo">
+          <span class="brand-text">Sword Duel Simulator</span>
+        </a>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#arena">Arena</a>
+          <a href="#about">About</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Medieval Fantasy Combat</p>
+          <h1>Enter The Arena.</h1>
+          <p class="hero-subtitle">Fight for glory in a medieval duel of strategy, survival, and dramatic steel.</p>
+          <div class="hero-actions">
+            <a class="primary-btn" id="startDuelBtn" href="#arena">Start Duel</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-chip">⚔ Turn-based</div>
+            <div class="stat-chip">🛡 Tactical defense</div>
+            <div class="stat-chip">🔥 Dynamic outcomes</div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-battle-card">
+            <div class="battle-crest">⚔</div>
+            <div class="battle-ring"></div>
+            <div class="battle-spark spark-a"></div>
+            <div class="battle-spark spark-b"></div>
+            <div class="battle-spark spark-c"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features-section" aria-label="Features">
+        <div class="section-heading features-heading">
+          <p class="eyebrow">Features</p>
+        </div>
+        <div class="features" aria-label="Feature cards">
+            <article class="feature-card">
+            <div class="feature-icon">🗡</div>
+            <h2>Turn-Based Combat</h2>
+            <p>Each duel is a careful exchange of attacks, parries, and survival timing.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🛡</div>
+            <h2>Strategic Defense & Dodge</h2>
+            <p>Guard against incoming blows or slip away from danger with tactical movement.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h2>Dynamic Battle Outcomes</h2>
+            <p>Randomized damage, critical hits, and combat reactions keep every duel tense.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="arena-section" id="arena">
+        <div class="section-heading">
+          <p class="eyebrow">Battle Arena</p>
+          <h2>Steel clash.</h2>
+          <p class="section-copy">Every round brings danger, momentum, and a chance for glory.</p>
+        </div>
+
+        <div class="arena-card" id="arenaCard">
+          <div class="arena-topline">
+            <div class="duel-badge">Battle Status</div>
+            <div class="duel-badge alt" id="battleStatus">Duel in progress</div>
+          </div>
+
+          <div class="round-announcement" id="roundAnnouncement" aria-live="polite">
+            <div class="round-announcement-content">
+              <p class="round-announcement-label">ROUND 1</p>
+              <p class="round-announcement-copy">The enemy grows stronger with every steel clash.</p>
+            </div>
+          </div>
+
+          <div class="arena-layout">
+            <div class="arena-stage" aria-label="Battle field">
+              <div class="combatant combatant-player">
+                <div class="combatant-icon">🛡️</div>
+                <div class="combatant-name">Player Knight</div>
+                <div class="hp-block">
+                  <div class="hp-label-row">
+                    <span>HP</span>
+                    <span id="playerHpText">100 / 100</span>
+                  </div>
+                  <div class="hp-bar-track">
+                    <div class="hp-bar hp-player" id="playerHpBar"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="vs-ring">
+                <span>VS</span>
+              </div>
+
+              <div class="combatant combatant-enemy">
+                <div class="combatant-icon">👹</div>
+                <div class="combatant-name">Enemy Knight</div>
+                <div class="hp-block">
+                  <div class="hp-label-row">
+                    <span>HP</span>
+                    <span id="enemyHpText">100 / 100</span>
+                  </div>
+                  <div class="hp-bar-track">
+                    <div class="hp-bar hp-enemy" id="enemyHpBar"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="battle-console">
+              <div class="console-header">
+                <h3>Combat Actions</h3>
+                <p>Choose your move each round.</p>
+              </div>
+
+              <div class="action-grid">
+                <button class="action-btn attack-btn" data-action="attack">⚔️ Attack</button>
+                <button class="action-btn defend-btn" data-action="defend">🛡️ Defend</button>
+                <button class="action-btn dodge-btn" data-action="dodge">🌀 Dodge</button>
+              </div>
+
+              <div class="log-panel">
+                <div class="log-header">
+                  <h3>Combat Log</h3>
+                  <span class="log-dot"></span>
+                </div>
+                <div class="log-list" id="combatLog" aria-live="polite"></div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="arena-footer-actions">
+            <button class="primary-btn" id="fightAgainBtn">Fight Again</button>
+          </div>
+
+          <div class="battle-result-overlay" id="battleResultOverlay" aria-live="polite">
+            <div class="result-card">
+              <p class="result-kicker">Duel complete</p>
+              <h2 id="resultTitle">VICTORY</h2>
+              <p id="resultText">The enemy falls before your blade.</p>
+              <button class="primary-btn" id="restartBtn">Play Again</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section" id="about">
+        <div class="about-copy">
+          <p class="eyebrow">About</p>
+          <h2>Fantasy combat, built in the browser.</h2>
+          <p>Sword Duel Simulator is a fantasy-inspired browser game built with HTML, CSS, and JavaScript. Players battle enemy knights using strategy, timing, and luck in a dramatic turn-based combat system.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Built for warriors and adventurers.</p>
+      <p>© <span id="year"></span> Sword Duel Simulator</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
